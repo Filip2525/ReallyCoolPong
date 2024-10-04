@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://by55boypwlntn"]
+[gd_scene load_steps=10 format=3 uid="uid://by55boypwlntn"]
 
 [ext_resource type="Script" path="res://Variables.gd" id="1_e3e2s"]
 [ext_resource type="Texture2D" uid="uid://xmpc51wdxtak" path="res://assets/sprites/Pixel.png" id="2_s31qv"]
@@ -14,8 +14,6 @@ b = Vector2(1280, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rbv7p"]
 radius = 24.5459
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2fgeh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_th4oh"]
 size = Vector2(1, 1)
@@ -54,9 +52,10 @@ platform_on_leave = 2
 shape = SubResource("CircleShape2D_rbv7p")
 
 [node name="Player1" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 1, 1)
 position = Vector2(100, 360)
 scale = Vector2(30, 140)
-texture = SubResource("CompressedTexture2D_2fgeh")
+texture = ExtResource("2_s31qv")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Player1"]
 
@@ -66,9 +65,10 @@ shape = SubResource("RectangleShape2D_th4oh")
 one_way_collision_margin = 0.0
 
 [node name="Player2" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 1, 1)
 position = Vector2(1180, 360)
 scale = Vector2(30, 140)
-texture = SubResource("CompressedTexture2D_2fgeh")
+texture = ExtResource("2_s31qv")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Player2"]
 
