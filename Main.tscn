@@ -1,3 +1,71 @@
-[gd_scene format=3 uid="uid://by55boypwlntn"]
+[gd_scene load_steps=8 format=3 uid="uid://by55boypwlntn"]
+
+[ext_resource type="Texture2D" uid="uid://cn4tia2k4l1kd" path="res://ball.png" id="1_bwt2t"]
+[ext_resource type="Texture2D" uid="uid://xmpc51wdxtak" path="res://Pixel.png" id="2_wvt2b"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_6envc"]
+a = Vector2(0, 720)
+b = Vector2(1280, 720)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_vgnfl"]
+b = Vector2(1280, 0)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7qy36"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rbv7p"]
+radius = 25.5049
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_th4oh"]
+size = Vector2(1, 1)
 
 [node name="Node2D" type="Node2D"]
+
+[node name="WallColliders" type="StaticBody2D" parent="."]
+
+[node name="Bottom" type="CollisionShape2D" parent="WallColliders"]
+shape = SubResource("SegmentShape2D_6envc")
+
+[node name="Top" type="CollisionShape2D" parent="WallColliders"]
+shape = SubResource("SegmentShape2D_vgnfl")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(1280, 720)
+texture = SubResource("PlaceholderTexture2D_7qy36")
+
+[node name="Ball" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
+texture = ExtResource("1_bwt2t")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Ball"]
+motion_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball/CharacterBody2D"]
+shape = SubResource("CircleShape2D_rbv7p")
+
+[node name="Player1Tab" type="Sprite2D" parent="."]
+position = Vector2(100, 360)
+scale = Vector2(30, 140)
+texture = ExtResource("2_wvt2b")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Player1Tab"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1Tab/CharacterBody2D"]
+position = Vector2(2.14577e-06, 0)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_th4oh")
+one_way_collision_margin = 0.0
+
+[node name="Player2Tab" type="Sprite2D" parent="."]
+position = Vector2(1180, 360)
+scale = Vector2(30, 140)
+texture = ExtResource("2_wvt2b")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Player2Tab"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2Tab/CharacterBody2D"]
+position = Vector2(2.14577e-06, 0)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_th4oh")
+one_way_collision_margin = 0.0
