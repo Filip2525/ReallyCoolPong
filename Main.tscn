@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://by55boypwlntn"]
+[gd_scene load_steps=11 format=3 uid="uid://by55boypwlntn"]
 
 [ext_resource type="Script" path="res://Variables.gd" id="1_6tdey"]
 [ext_resource type="Texture2D" uid="uid://cn4tia2k4l1kd" path="res://ball.png" id="1_bwt2t"]
 [ext_resource type="Texture2D" uid="uid://xmpc51wdxtak" path="res://Pixel.png" id="2_wvt2b"]
 [ext_resource type="Texture2D" uid="uid://d2kgjq387ukkj" path="res://blackpixel.png" id="3_6mwdl"]
+[ext_resource type="AudioStream" uid="uid://uu311jyyblv4" path="res://Sakura-Girl-Yay-chosic.com_.mp3" id="5_b67bb"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_6envc"]
 a = Vector2(0, 720)
@@ -85,3 +86,8 @@ shape = SubResource("SegmentShape2D_086qw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player2End"]
 shape = SubResource("SegmentShape2D_086qw")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_b67bb")
+volume_db = -15.0
+autoplay = true
