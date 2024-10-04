@@ -91,3 +91,4 @@ shape = SubResource("SegmentShape2D_086qw")
 stream = ExtResource("5_b67bb")
 volume_db = -15.0
 autoplay = true
+parameters/looping = true
