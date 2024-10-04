@@ -24,6 +24,9 @@ a = Vector2(0, 720)
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_6tdey")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(640, 360)
 scale = Vector2(1280, 720)
