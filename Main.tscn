@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://by55boypwlntn"]
+[gd_scene load_steps=9 format=3 uid="uid://by55boypwlntn"]
 
 [ext_resource type="Texture2D" uid="uid://cn4tia2k4l1kd" path="res://ball.png" id="1_bwt2t"]
 [ext_resource type="Texture2D" uid="uid://xmpc51wdxtak" path="res://Pixel.png" id="2_wvt2b"]
@@ -17,6 +17,9 @@ radius = 25.5049
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_th4oh"]
 size = Vector2(1, 1)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_086qw"]
+a = Vector2(0, 720)
 
 [node name="Node2D" type="Node2D"]
 
@@ -44,28 +47,38 @@ motion_mode = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball/CharacterBody2D"]
 shape = SubResource("CircleShape2D_rbv7p")
 
-[node name="Player1Tab" type="Sprite2D" parent="."]
+[node name="Player1" type="Sprite2D" parent="."]
 position = Vector2(100, 360)
 scale = Vector2(30, 140)
 texture = ExtResource("2_wvt2b")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Player1Tab"]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Player1"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1Tab/CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1/CharacterBody2D"]
 position = Vector2(2.14577e-06, 0)
 scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_th4oh")
 one_way_collision_margin = 0.0
 
-[node name="Player2Tab" type="Sprite2D" parent="."]
+[node name="Player2" type="Sprite2D" parent="."]
 position = Vector2(1180, 360)
 scale = Vector2(30, 140)
 texture = ExtResource("2_wvt2b")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Player2Tab"]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Player2"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2Tab/CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2/CharacterBody2D"]
 position = Vector2(2.14577e-06, 0)
 scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_th4oh")
 one_way_collision_margin = 0.0
+
+[node name="Player1End" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1End"]
+shape = SubResource("SegmentShape2D_086qw")
+
+[node name="Player2End" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2End"]
+shape = SubResource("SegmentShape2D_086qw")
