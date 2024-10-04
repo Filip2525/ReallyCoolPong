@@ -23,3 +23,4 @@ Variables="*res://Variables.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+mouse_cursor/custom_image="res://ball.png"
