@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="ReallyCoolPong"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://scenes/Main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/sprites/icon.svg"
 
 [autoload]
 
@@ -25,4 +25,4 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/mode=3
 window/stretch/mode="viewport"
-mouse_cursor/custom_image="res://Pixel.png"
+mouse_cursor/custom_image="res://assets/sprites/Pixel.png"

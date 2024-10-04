@@ -1,10 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://by55boypwlntn"]
 
-[ext_resource type="Script" path="res://Variables.gd" id="1_6tdey"]
-[ext_resource type="Texture2D" uid="uid://cn4tia2k4l1kd" path="res://ball.png" id="1_bwt2t"]
-[ext_resource type="Texture2D" uid="uid://xmpc51wdxtak" path="res://Pixel.png" id="2_wvt2b"]
-[ext_resource type="Texture2D" uid="uid://d2kgjq387ukkj" path="res://blackpixel.png" id="3_6mwdl"]
-[ext_resource type="AudioStream" uid="uid://uu311jyyblv4" path="res://Sakura-Girl-Yay-chosic.com_.mp3" id="5_b67bb"]
+[ext_resource type="Script" path="res://Variables.gd" id="1_e3e2s"]
+[ext_resource type="Texture2D" uid="uid://xmpc51wdxtak" path="res://assets/sprites/Pixel.png" id="2_s31qv"]
+[ext_resource type="Texture2D" uid="uid://cn4tia2k4l1kd" path="res://assets/sprites/ball.png" id="3_me5kg"]
+[ext_resource type="AudioStream" uid="uid://uu311jyyblv4" path="res://assets/music/Sakura-Girl-Yay-chosic.com_.mp3" id="4_x0mmq"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_6envc"]
 a = Vector2(0, 720)
@@ -16,6 +15,8 @@ b = Vector2(1280, 0)
 [sub_resource type="CircleShape2D" id="CircleShape2D_rbv7p"]
 radius = 24.5459
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2fgeh"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_th4oh"]
 size = Vector2(1, 1)
 
@@ -23,7 +24,7 @@ size = Vector2(1, 1)
 a = Vector2(0, 720)
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_6tdey")
+script = ExtResource("1_e3e2s")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -31,7 +32,7 @@ anchor_mode = 0
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(640, 360)
 scale = Vector2(1280, 720)
-texture = ExtResource("2_wvt2b")
+texture = ExtResource("2_s31qv")
 
 [node name="WallColliders" type="StaticBody2D" parent="."]
 
@@ -43,7 +44,7 @@ shape = SubResource("SegmentShape2D_vgnfl")
 
 [node name="Ball" type="Sprite2D" parent="."]
 position = Vector2(640, 360)
-texture = ExtResource("1_bwt2t")
+texture = ExtResource("3_me5kg")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Ball"]
 motion_mode = 1
@@ -55,7 +56,7 @@ shape = SubResource("CircleShape2D_rbv7p")
 [node name="Player1" type="Sprite2D" parent="."]
 position = Vector2(100, 360)
 scale = Vector2(30, 140)
-texture = ExtResource("3_6mwdl")
+texture = SubResource("CompressedTexture2D_2fgeh")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Player1"]
 
@@ -67,7 +68,7 @@ one_way_collision_margin = 0.0
 [node name="Player2" type="Sprite2D" parent="."]
 position = Vector2(1180, 360)
 scale = Vector2(30, 140)
-texture = ExtResource("3_6mwdl")
+texture = SubResource("CompressedTexture2D_2fgeh")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Player2"]
 
@@ -87,7 +88,7 @@ shape = SubResource("SegmentShape2D_086qw")
 shape = SubResource("SegmentShape2D_086qw")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_b67bb")
+stream = ExtResource("4_x0mmq")
 volume_db = -15.0
 autoplay = true
 parameters/looping = true
