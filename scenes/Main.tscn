@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://by55boypwlntn"]
+[gd_scene load_steps=13 format=3 uid="uid://by55boypwlntn"]
 
 [ext_resource type="Script" path="res://Variables.gd" id="1_e3e2s"]
 [ext_resource type="Texture2D" uid="uid://xmpc51wdxtak" path="res://assets/sprites/Pixel.png" id="2_s31qv"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://uu311jyyblv4" path="res://assets/music/Sakura-Girl-Yay-chosic.com_.mp3" id="4_x0mmq"]
 [ext_resource type="Script" path="res://PlayerScript1.gd" id="4_xnemm"]
 [ext_resource type="Script" path="res://PlayerScript2.gd" id="5_8ygqh"]
+[ext_resource type="Script" path="res://scenes/Ball.gd" id="6_10wsw"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_6envc"]
 a = Vector2(0, 720)
@@ -14,14 +15,14 @@ b = Vector2(1280, 720)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_vgnfl"]
 b = Vector2(1280, 0)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_rbv7p"]
-radius = 24.5459
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_th4oh"]
 size = Vector2(1, 1)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_086qw"]
 a = Vector2(0, 720)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rbv7p"]
+radius = 24.5459
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_e3e2s")
@@ -41,17 +42,6 @@ shape = SubResource("SegmentShape2D_6envc")
 
 [node name="Top" type="CollisionShape2D" parent="WallColliders"]
 shape = SubResource("SegmentShape2D_vgnfl")
-
-[node name="Ball" type="Sprite2D" parent="."]
-position = Vector2(640, 360)
-texture = ExtResource("3_me5kg")
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Ball"]
-motion_mode = 1
-platform_on_leave = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball/CharacterBody2D"]
-shape = SubResource("CircleShape2D_rbv7p")
 
 [node name="Player1" type="Sprite2D" parent="."]
 modulate = Color(0, 1, 1, 1)
@@ -96,3 +86,21 @@ stream = ExtResource("4_x0mmq")
 volume_db = -15.0
 autoplay = true
 parameters/looping = true
+
+[node name="Ball" type="CharacterBody2D" parent="."]
+position = Vector2(640, 360)
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("6_10wsw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("CircleShape2D_rbv7p")
+
+[node name="Ball" type="Sprite2D" parent="Ball"]
+texture = ExtResource("3_me5kg")
+
+[node name="ResetTimer" type="Timer" parent="Ball"]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Ball/ResetTimer" to="Ball" method="_on_reset_timer_timeout"]
