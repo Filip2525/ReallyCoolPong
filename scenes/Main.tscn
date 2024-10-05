@@ -1,11 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://by55boypwlntn"]
+[gd_scene load_steps=14 format=3 uid="uid://by55boypwlntn"]
 
 [ext_resource type="Script" path="res://Variables.gd" id="1_e3e2s"]
 [ext_resource type="Texture2D" uid="uid://xmpc51wdxtak" path="res://assets/sprites/Pixel.png" id="2_s31qv"]
 [ext_resource type="Texture2D" uid="uid://cn4tia2k4l1kd" path="res://assets/sprites/ball.png" id="3_me5kg"]
 [ext_resource type="AudioStream" uid="uid://uu311jyyblv4" path="res://assets/music/Sakura-Girl-Yay-chosic.com_.mp3" id="4_x0mmq"]
-[ext_resource type="Script" path="res://PlayerScript1.gd" id="4_xnemm"]
-[ext_resource type="Script" path="res://PlayerScript2.gd" id="5_8ygqh"]
+[ext_resource type="Script" path="res://src/PlayerScript.gd" id="4_xnemm"]
+[ext_resource type="Shader" path="res://src/shaders/FirstPostProcess.gdshader" id="6_2mw45"]
 [ext_resource type="Script" path="res://scenes/Ball.gd" id="6_10wsw"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_6envc"]
@@ -23,6 +23,9 @@ a = Vector2(0, 720)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rbv7p"]
 radius = 24.5459
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3l2bn"]
+shader = ExtResource("6_2mw45")
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_e3e2s")
@@ -49,6 +52,8 @@ position = Vector2(100, 360)
 scale = Vector2(30, 140)
 texture = ExtResource("2_s31qv")
 script = ExtResource("4_xnemm")
+up_key = "W"
+down_key = "S"
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Player1"]
 
@@ -62,7 +67,9 @@ modulate = Color(0, 1, 1, 1)
 position = Vector2(1180, 360)
 scale = Vector2(30, 140)
 texture = ExtResource("2_s31qv")
-script = ExtResource("5_8ygqh")
+script = ExtResource("4_xnemm")
+up_key = "ui_up"
+down_key = "ui_down"
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Player2"]
 
@@ -102,5 +109,15 @@ texture = ExtResource("3_me5kg")
 [node name="ResetTimer" type="Timer" parent="Ball"]
 wait_time = 2.0
 one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_3l2bn")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="timeout" from="Ball/ResetTimer" to="Ball" method="_on_reset_timer_timeout"]
