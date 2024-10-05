@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://uu311jyyblv4" path="res://assets/music/Sakura-Girl-Yay-chosic.com_.mp3" id="4_x0mmq"]
 [ext_resource type="Script" path="res://src/PlayerScript.gd" id="4_xnemm"]
 [ext_resource type="Shader" path="res://src/shaders/FirstPostProcess.gdshader" id="6_2mw45"]
-[ext_resource type="Script" path="res://scenes/Ball.gd" id="6_10wsw"]
+[ext_resource type="Script" path="res://src/Ball.gd" id="6_10wsw"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_6envc"]
 a = Vector2(0, 720)
